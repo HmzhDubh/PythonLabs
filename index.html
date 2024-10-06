@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Hmzh Dubh" content=" CPIT-405">
+    <title>Python Camp Laps</title>
+    <style>
+        :root {
+          --dark-grey: #0a0a23;
+          --white: #ffffff;
+          --yellow: #f1be32;
+        }
+        body {
+          color: var(--white);
+          background-color: var(--dark-grey);
+          font-family: Helvetica, Sans-serif ;
+        }
+        .advice-card {
+          background-color: #313a48;
+          border-radius: 10px;
+          padding: 30px;
+          max-width: 400px;
+          text-align: center;
+          position: relative;
+          margin-top: 30px;
+          margin-bottom: 50px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .advice-number {
+          color: #52ffa8;
+          font-size: 12px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          margin-bottom: 20px;
+        }
+
+        .advice-text {
+          color: #cee3e9;
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+
+
+        .dice-button {
+          background-color: #52ffa8;
+          border: none;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          bottom: -30px;
+          left: 50%;
+          transform: translateX(-50%);
+          cursor: pointer;
+        }
+
+        .dice-button:hover {
+          box-shadow: 0 0 40px rgba(82, 255, 168, 0.5);
+        }
+
+        .advice-card:hover {
+            box-shadow: 0 0 40px #f5f8fc;
+        }
+
+        .title-container {
+          margin: 10px 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+        .title {
+            font-size: 2.5rem;
+        }
+        .divider {
+          margin: auto;
+          width: 150px;
+          height: 10px;
+          background-color: var(--yellow);
+        }
+        .dropdown-container {
+          width: 80%;
+          margin: 30px auto;
+          position: relative;
+        }
+        select {
+          display: block;
+          margin: 20px auto 0;
+          width: 100%;
+          height: 50px;
+          font-size: 100%;
+          font-weight: bold;
+          cursor: pointer;
+          background-color: var(--white);
+          border: none;
+          color: var(--dark-grey);
+          appearance: none;
+          padding: 10px;
+          padding-right: 38px;
+          transition: color 0.3s ease, background-color 0.3s ease,
+          border-bottom-color 0.3s ease;
+        }
+        #current-date {
+          font-size: 2rem;
+          text-align: center;
+        }
+
+        h1 {
+            display: block;
+            margin-block-start: 1.33em;
+            margin-block-end: 1.33em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+        }
+
+        .box {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 .5em 1em -.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02);
+            color: #4a4a4a;
+            display: block;
+            padding: 1.25rem;
+            margin-top: 0.5em;
+            line-height: 1.5;
+            display: block;
+            font-size: 12px;
+            color: #818181;
+            background-color: #f5f8fc;
+            margin: 1.5em;
+            text-align: center;
+
+        }
+        a{
+            text-decoration: none;
+            color: var(--yellow)
+        }
+        .proj-box{
+            background-color: white;
+        }
+        .proj-box a{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="title-container">
+    <h2 class="title">Today's Date</h2>
+</div>
+<div class="divider"></div>
+<div class="dropdown-container">
+    <select name="date-options" id="date-options">
+        <option value="dd-mm-yyyy">Day, Month, Year</option>
+        <option value="yyyy-mm-dd">Year, Month, Day</option>
+        <option value="mm-dd-yyyy-h-mm">
+            Month, Day, Year, Hours, Minutes
+        </option>
+    </select>
+</div>
+<p id="current-date"></p>
+<div class="divider"></div>
+<div class="advice-card">
+    <h2 id="advice-id" class="advice-number"></h2>
+    <p id ="advice" class="advice-text"></p>
+
+    <button class="dice-button" onclick="rAdvice()">?</button>
+</div>
+<div class="divider"></div>
+<div class="box">
+    <h1>
+        <a href="aboutMe/hmzhDubh.html">About Me "Hmzh Dubh"</a>
+    </h1>
+</div>
+<div class="box">
+    <h1>
+        <a href="search/dataStructures.html"> Data Structures in Python</a>
+    </h1>
+</div>
+<div class="advice-card">
+    <h2 id="joke-id" class="advice-number"></h2>
+    <p id ="joke-p1" class="advice-text"></p>
+    <p id ="joke-p2" class="advice-text"></p>
+
+    <button class="dice-button" onclick="rJoke()">(;</button>
+</div>
+
+<script>
+    function rJoke(){
+
+        const jokeElement1 = document.getElementById("joke-p1");
+        const jokeElement2 = document.getElementById("joke-p2");
+
+        const idElement = document.getElementById("joke-id");
+
+        jokeElement1.innerText = "";
+        jokeElement2.innerText = "";
+        idElement.innerText = "";
+
+        fetch('https://v2.jokeapi.dev/joke/Programming')
+        .then(response => response.json())
+        .then(data => {
+
+
+            idElement.innerText = data.category;
+
+            if(data.type === "twopart"){
+                jokeElement1.innerText = data.setup
+                jokeElement2.innerText = data.delivery
+                console.log(`Joke Setup: ${data.setup}`);
+                console.log(`Joke Delivery: ${data.delivery}`);
+            }
+            else if(data.type === "single"){
+                console.log(`Joke: ${data.joke}`);
+                jokeElement1.innerText = data.joke
+
+            }
+        });
+    }
+    function rAdvice(){
+        const url = "https://api.adviceslip.com/advice";
+        const myAdvice = new XMLHttpRequest();
+
+
+        myAdvice.onreadystatechange = function(){
+            if(myAdvice.readyState === 4 && myAdvice.status === 200){
+
+                const theAdvice = JSON.parse(myAdvice.responseText);
+                console.log(theAdvice.slip.advice);
+                const adviceElement = document.getElementById("advice");
+                const idElement = document.getElementById("advice-id");
+
+                adviceElement.innerText = theAdvice.slip.advice;
+                idElement.innerText = `#${theAdvice.slip.id}`;
+
+
+            }else if(myAdvice.readyState === 4 && myAdvice.status !== 200){
+                alert("Error", myAdvice.status, myAdvice.statusText);
+            }
+        }
+        myAdvice.open('GET', `${url}`, true);
+        myAdvice.send();
+    }
+    const currentDateParagraph = document.getElementById("current-date");
+    const dateOptionsSelectElement = document.getElementById("date-options");
+
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    const formattedDate = `${day}-${month}-${year}`;
+    currentDateParagraph.textContent = formattedDate;
+
+    dateOptionsSelectElement.addEventListener("change", () => {
+
+      switch (dateOptionsSelectElement.value) {
+        case "yyyy-mm-dd":
+          currentDateParagraph.textContent = formattedDate
+            .split("-")
+            .reverse()
+            .join("-");
+          break;
+        case "mm-dd-yyyy-h-mm":
+          currentDateParagraph.textContent = `${month}-${day}-${year} ${hours} Hours ${minutes} Minutes`;
+          break;
+        default:
+            currentDateParagraph.textContent = formattedDate
+      }
+    });
+</script>
+
+</body>
+</html>

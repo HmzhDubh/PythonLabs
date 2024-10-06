@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Structures</title>
+    <link rel="stylesheet" href="stylesOfChapter.css">
+
+</head>
+<body>
+
+    <div class="cover-page">
+        <h1>Data Structures in python</h1>
+        <ul>
+            <li><a href="#">Main</a></li>
+            <li><a href="#data-structures">Data Structures</a></li>
+        </ul>
+        <div>
+            Lists:
+
+
+            What is list slicing?
+
+
+            Tuples:
+            What is a tuple and how is it different from a list?
+            How can you create, access, and modify tuples in Python?
+            What are some use cases where tuples are preferred over lists?
+            How to check if an items exists in a tuple ?
+            How do you iterate over the items in a tuple?
+            How to get how many items in a tuple?
+            How do you combine elements from two tuples into one ?
+            What is tuple slicing?</div>
+    </div>
+    <hr>
+
+    <section id="data-structures">
+        <div>
+            <h2> What are Data Structures ?</h2>
+            <hr>
+            <p>They are a foundation for organizing and sorting data in the computer's memory, <br>The main purpose is to allow efficient access, manipulation and retrieval of data.</p>
+            <img width="220" height="200" src="https://cdn.prod.website-files.com/6064b31ff49a2d31e0493af1/665038c4489789528d0acdc3_VceEmBbixoG6giQleh-r1jCIf2jzeWWsgiCUNghOY7n0OpbDw70u-hb6n1sJbsj6z7z79f7SfsV5X_GU0dWvSe63Iw4wKeZNXG91acOr3pdDxkjpDH4otyY6JIGdCUwWRQqBpxd2pvJj-X6miQGqork.png">
+            <p>The above figure shows the main data structures to begin with. <br> all of these types are mutable except the tuples they are immutable</p>
+        </div>
+
+    </section>
+    <section id="lists">
+        <div>
+            <h2> A. Lists</h2>
+            <hr>
+            <p>Lists are dynamic (expands as much as needed), heterogeneous (different types of data can exist at the same list) arrays contain sequence of items </p>
+            <h4>List creation:</h4>
+            <ul>
+                <li><code>myList = []</code> then add using append or insert</li>
+                <li><code>myList = [1, 2, 3, 4]</code> filled with initial data</li>
+                <li><code>myList = list((1, 2, 3, 4))</code></li>
+            </ul>
+            <h5>Access, modify and delete from a list</h5>
+            <ul>
+                <li>Access by index / range of indexes (also used for slicing) / for each loop to access all elements-> <code>myList[0:-2]</code> </li>
+                <li><code>list.append()</code> is used to add an element at the end of the list</li>
+                <li><code>list.insert()</code> is used to add an element at a specific given index</li>
+                <li><code>list.remove()</code> is used to remove a specific element from the list</li>
+            </ul>
+            <h5>Other common methods: </h5>
+            <ul>
+                <li><code>list.extend()</code> is used to merge two lists together or we can use + to join two lists together </li>
+                <li><code>pop()</code> is used to access the last element of the list by default or pop a specific given index </li>
+                <li><code>clear()</code> will remove all elements from the list</li>
+                <li><code>index()</code> will remove the index of the specified value</li>
+                <li><code>count()</code> counts the number of the occurrences of the specified value</li>
+                <li>Check for items exits in the list <code>if "a" in myList: print("yes")</code></li>
+                <li><code>len()</code> returns the length of the list</li>
+            </ul>
+
+        </div>
+        <div>
+            <h1>list comprehensions and their advantages</h1>
+            <hr>
+            <h4>It is away with shorter syntax (one line of code) when you want to make a new list based on the values of an existing list</h4>
+            <h5> It replaces the work of the for each loop and merge it into one line</h5>
+            <p>Assuming we have a list <code>myList = [1,2,3,4,5,6,7,8,9]</code> <br>task: we want to make a new list that contain the odd numbers from the main list using list comprehension
+                <br>
+                <code>newList = [x for x in myList if x%2 != 0 </code>
+            </p>
+        </div>
+
+    </section>
+
+</body>
+</html>
