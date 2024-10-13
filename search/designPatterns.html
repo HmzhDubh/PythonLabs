@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Design Pattern</title>
+</head>
+<body>
+    <dev class="cover-page">
+        <h1>Design Pattern</h1>
+        <p>They are solutions to common coding problems in software design, it is templates on how to solve that problem and can be applied on several programming languages </p>
+        <p>Consequences: improves communication between designers and developers, it also increases system maintainability and scalability, however it may lead to code complexity </p>
+        <p>how to choose a pattern: based on the nature of the problem and the issues you are facing, in addition to the constraints of your environment, and the intent, and structure of the pattern</p>
+        <p>provide tried and tested solutions to common problems, encourage code reusability, better organization and enhance communication between developers </p>
+    </dev>
+    <div>
+        <ul>
+            <li> Creational Design Pattern : are concerned with how classes and objects interacts with each other</li>
+            <ol>
+                <li> Singleton </li>
+                <li> Factory </li>
+                <li> Builder </li>
+                <li> Abstract</li>
+                <li> Prototype</li>
+            </ol>
+            <li> Structural Design Patterns : Concerned with classes and objects are formed and made</li>
+            <ol>
+                <li>Decorator</li>
+                <li>Adaptor</li>
+
+            </ol>
+            <li> Behavioural Design Patterns</li>
+            <ol>
+                <li>Observer</li>
+                <li>Strategy</li>
+                <li>Command</li>
+                <li>Chain if responsibility</li>
+                <li>Template</li>
+                <li>Visitor</li>
+            </ol>
+        </ul>
+    </div>
+    <div>
+        <h1>Creational</h1>
+        <h2> Singleton: Ensure class has only one instance, and provides a global point of access to that instance</h2>
+        <p> private static singleton instance, and private constructor </p>
+        <h2> Factory: it provides an interface for creating an instances of as class by overriding the factory method and produce different custom instances, which promotes loose coupling and flexibility, used commonly where the class of the object is determined at runtime </h2>
+        <h2>Builder: separates the construction of the complex object from its representation, allowing various representations</h2>
+        <h2>Prototype: used to clone object and keeping performance in mind as it doesn't make it dependent on the object classes, provides features of adding removing products at run time</h2>
+    </div>
+    <div>
+        <h1>Behavioural</h1>
+        <h2>Observer: is a one to many dependency between objects, so if that one object changed its state all its dependents will be notified and updates</h2>
+        <p> It is commonly used in implementing vent handling systems </p>
+        <h2>Strategy: is a family of encapsulated interchangeable algorithms, made to vary independently </h2>
+        <p>useful if you have different algorithms for the same task</p>
+        <h2>Template: it defines the skeleton of the algorithm and lets subclasses overrides specific steps of the algorithm without having to change the structure if the main algorithm</h2>
+        <h2>Command: turns request into a stand-alone object that contains all information about the request, it's useful in scenarios where queueing tasks and tracking requests history and implementing callbacks functionalities </h2>
+    </div>
+    <div>
+        <h1>Structural</h1>
+        <h2>Decorator: lets you attach a additional behaviour to the function without having to change it, rather ir is rapped with another function that adds that behaviour</h2>
+        <h2>Adaptor: allows two incompatible instances to collaborate by providing a bridge between them, they are often used to integrates new features with old systems without modifying the system architecture</h2>
+    </div>
+</body>
+</html>
